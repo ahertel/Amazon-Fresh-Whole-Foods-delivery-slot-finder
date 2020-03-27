@@ -9,9 +9,9 @@ Download 'delivery-window-finder.app'
 
 Instructions:
 -
-1. log into your Amazon account in Safari.
-2. fill your Whole Foods cart and try to check manually. Stop once you've arrived at the page saying no slots are available
-3. open the app orrun the script. you'll be notified when a slot frees up
+1. Log into your Amazon account in Safari.
+2. Fill your Whole Foods cart and try to check manually. Stop once you've arrived at the page saying no slots are available
+3. Open the app or run the script. You'll be notified when a slot frees up
 4. Don't quit Safari or let your computer fall asleep, or the program will stop.
 
 It will open a new window with the amazon checkout page, and minimize that window so that it can run in the background.
