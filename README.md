@@ -5,7 +5,7 @@ This was created because coronavirus pandemic has caused a surge in demand for g
 
 Downloading:
 -
-Download 'delivery-window-finder.scpt'
+Download 'delivery-window-finder.scpt' [here](https://github.com/ahertel/wholefoods-delivery-slot-finder/raw/master/delivery-window-finder.scpt)
 
 Instructions:
 -
