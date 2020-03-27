@@ -10,8 +10,8 @@ Download 'delivery-window-finder.scpt' [here.](https://github.com/ahertel/wholef
 Instructions:
 -
 1. Log into your Amazon account in Safari.
-2. Fill your Whole Foods cart and try to check manually. Stop once you've arrived at the page saying no slots are available
-3. Open script and click the play button to run. You can now minimize the script window to hide it while it runs
+2. Fill your Whole Foods cart and try to check manually. Stop once you've arrived at the page saying no slots are available.
+3. Open script and click the play button to run. You can now minimize the script window to hide it while it runs.
 
 Notes:
 -
