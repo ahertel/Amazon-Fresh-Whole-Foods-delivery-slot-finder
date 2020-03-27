@@ -17,6 +17,6 @@ Notes:
 -
 It will open a new window with the amazon checkout page, and minimize that window so that it can run in the background.
 You'll be notified when a slot frees up. Don't quit Safari or let your computer fall asleep, or the program will stop.
-If you want it to run while you are away from your computer, I recommend downloading caffeine(http://lightheadsw.com/caffeine/) to keep your Mac awake, then turning the volume all the way up so you can hear when it finds a slot.
+If you want it to run while you are away from your computer, I recommend downloading the [Caffeine app](http://lightheadsw.com/caffeine/) to keep your Mac awake, then turning the volume all the way up so you can hear when it finds a slot.
 
 It seems slots seem to open up at Midnight in each time zone so you may get lucky just reloading the checkout page manually then.
