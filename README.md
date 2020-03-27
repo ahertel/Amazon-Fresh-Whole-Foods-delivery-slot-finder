@@ -1,4 +1,4 @@
-# wholefoods-delivery-slot-finder
+# Whole Foods Delivery Slot Finder
 An ApplesScript that refreshes the Amazon.com Whole Foods cart page every minute and notifies you once it finds an open delivery slot.
 
 This was created because coronavirus pandemic has caused a surge in demand for grocery delivery services making it nearly impossible to find an open delivery slot and I didn't want to keep refreshing the page.
