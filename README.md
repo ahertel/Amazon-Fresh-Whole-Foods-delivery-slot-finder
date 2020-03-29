@@ -30,8 +30,10 @@ These are sample screenshots for delivery to a NJ address
 
 
 ### Incompatible:
-### Amazon Fresh:
+#### Amazon Fresh:
+##### 1.
 ![Santa Clara, CA](https://i.imgur.com/SyNtrZs.png)
+##### 2.
 ![an unkown city in CA](https://i.imgur.com/PYrO9Il.jpg)
 
 Notes:
