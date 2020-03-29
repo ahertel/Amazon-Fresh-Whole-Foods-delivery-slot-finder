@@ -20,3 +20,5 @@ You'll be notified when a slot frees up. Don't quit Safari or let your computer 
 If you want it to run while you are away from your computer, I recommend downloading the [Caffeine app](http://lightheadsw.com/caffeine/) to keep your Mac awake, then turning the volume all the way up so you can hear when it finds a slot.
 
 Slots seem to open up at midnight in each time zone so you may get lucky just reloading the checkout page manually then.
+
+A copy of the code is also available in .txt format. However, this copy might not be the most up to date version. The .scpt file is the most current and the one you should download if you want to run this program on your Mac.
