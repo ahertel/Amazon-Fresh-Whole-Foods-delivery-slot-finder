@@ -70,10 +70,13 @@ repeat while found_slot is false
 			-- bring window to front
 			set miniaturized of window id amzn_win_id to false
 			-- wait for window to open
-			delay 2
-			-- take screenshot to document slots were found
+			delay 1
+			-- maximize window so delivery slots are clearly visible
+			-- this might be useful later on if I want to have it take a screenshot as proof of delivery slots found
 			tell application "System Events"
-				key code 20 using {command down, shift down}
+				tell application "Finder" to get the bounds of the window of the desktop
+				tell application "Safari" to set the bounds of the front window to Â
+					{0, 22, (3rd item of the result), (4th item of the result)}
 			end tell
 		end tell
 	else
