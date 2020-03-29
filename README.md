@@ -12,7 +12,7 @@ Instructions:
 1. Log into your Amazon account in Safari.
 2. Fill your Whole Foods cart and try to check manually. Stop once you've arrived at the page saying no slots are available.
 3. Open script and click the play button to run. You can now minimize the script window to hide it while it runs.
-![run button](https://imgur.com/a/mipjX1m)
+![run button](https://i.imgur.com/kpQee5h.png)
 
 Notes:
 -
