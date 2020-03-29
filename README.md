@@ -1,4 +1,4 @@
-# Whole Foods/Amazon Fresh Delivery Slot Finder
+# Amazon Fresh/Whole Foods Delivery Slot Finder
 An ApplesScript that finds available delivery slots for Amazon's Whole Foods delivery and Amazon Fresh services.
 
 ## How it works:
