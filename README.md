@@ -17,7 +17,7 @@ The Coronavirus 2019 pandemic caused a surge in demand for grocery delivery serv
 6. Turn up the volume to hear the notification when a slot is found
 
 ## Compatibility
-**Before using this tool**, ensure that your checkout page looks exactly like the examples in the _Compatible_ section below.
+**Before using this tool**, ensure that your checkout page looks **exactly** like the examples in the _Compatible_ section below.
 This tool currently only works for some regions of the US because Amazon's checkout pages seem to vary based on your location and I designed the tool based on the page I see in my region. 
 If your checkout page doesn't look like the examples in the _Compatible_ or _Incompatible_ sections below, this tool may still work for you but no guarantees.
 
