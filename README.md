@@ -8,7 +8,7 @@ It opens the checkout page in a new window, minimizes it, and then refreshes eve
 The Coronavirus 2019 pandemic caused a surge in demand for grocery delivery services, making it nearly impossible to find an open delivery slot. Manually refreshing the page seemed too hard so I created this script to automate the search.
 
 ## Instructions:
-1. Read the compatibility section below to make sure the tool will work for you
+1. Read the [Compatibility](#compatibility:) section below to make sure the tool will work for you
 2. Download the 'delivery-window-finder.scpt' [here](https://github.com/ahertel/wholefoods-delivery-slot-finder/raw/master/delivery-window-finder.scpt)
 3. Log into your Amazon account in Safari
 4. Fill your Whole Foods/Amazon Fresh cart and try to checkout manually. Stop once you've arrived at the page saying no slots are available
