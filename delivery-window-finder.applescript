@@ -1,3 +1,17 @@
+-- Source: https://www.cubemg.com/how-to-extract-information-from-a-website-using-applescript/
+to clickClassName(theClassName, elementnum, tab_num, window_id)
+	
+	tell application "Safari"
+		
+		-- display dialog (text of last tab of window id amzn_win_id) as string
+		-- display dialog (text of document 1) as string
+		do JavaScript "document.getElementsByClassName('" & theClassName & "')[" & elementnum & "].click();" in tab tab_num of window id window_id
+		
+	end tell
+	
+end clickClassName
+
+
 -- variable definitions
 set found_slot to false
 set oos_keyword to "We're sorry we are unable to fulfill your entire order"
@@ -7,11 +21,21 @@ set slot_site_url to "https://www.amazon.com/gp/buy/shipoptionselect/handlers/di
 set slot_page_keyword to "Schedule your order"
 set no_slot_keyword to "No delivery windows available"
 set is_first_run to true
+set auto_ignore_oos to true
+
+-- prompt whether to ignore oos or wait for user to review
+display dialog "When items in your cart go out of stock, would you like the script to ignore it and keep looking for slots (recommended), or do you it to stop searching for slots until you manually review what went out of stock?" buttons {"Keep looking for slots", "Wait for me to review"} default button "Keep looking for slots"
+
+if result = {button returned:"Keep looking for slots"} then
+	set auto_ignore_oos to true -- redundant, but included for clarity
+else if result = {button returned:"Wait for me to review"} then
+	set auto_ignore_oos to false
+end if
 
 -- create new empty window, with one empty tab
 tell application "Safari"
 	make new document
-	set amzn_win_id to id of front window
+	delay 0.5 -- wait for new window to open
 	-- instead of creating a new tab in your current window, this creates a window and 'hides it by minimizing it. apple script doesn't allow you to move tabs around, all new tabs are created. an alternate solution would be to get the unique id of the tab and access it that way instead of putting the tab in a new window
 	set amzn_win_id to id of front window
 end tell
@@ -31,7 +55,7 @@ repeat while found_slot is false
 		end if
 		
 		-- wait for the page to load
-		delay 20
+		delay 30
 		
 		-- get the text on the page
 		set siteText to (text of last tab of window id amzn_win_id) as string
@@ -53,13 +77,25 @@ repeat while found_slot is false
 		delay 10
 	else if siteText contains oos_keyword then
 		-- landed on out of stock page
-		say "Item out of stock. See pop up"
 		
-		-- click continue button to dismiss out of stock warning
-		-- NOTE: currently doesn't work
-		-- clickID(continue_button_id)
+		if auto_ignore_oos then
+			-- click continue button to dismiss out of stock warning
+			clickClassName("a-button-text", 0, -1, amzn_win_id)
+			
+			log "Items out of stock were ignored"
+			say "ignored oos item"
+			-- delay to wait for the next page to load(it might be another oos page or the delivery slot page
+			delay 20
+			
+			-- closes the tab so the tab can be reloaded and processed anew
+			tell application "Safari"
+				close (last tab of window id amzn_win_id)
+			end tell
+		else
+			say "Item out of stock. See pop up"
+			display dialog oos_msg
+		end if
 		
-		display dialog oos_msg
 	else if siteText contains slot_page_keyword and (siteText contains "AM" or siteText contains "PM") then
 		-- landed on delivery slot page and delivery slot selection drop down appears aka. slot found!
 		display notification "Found delivery slot!" with title "Amazon" sound name "Sosumi"
@@ -73,6 +109,7 @@ repeat while found_slot is false
 			delay 1
 			-- maximize window so delivery slots are clearly visible
 			-- this might be useful later on if I want to have it take a screenshot as proof of delivery slots found
+			-- Credit for fill to screen: https://macosxautomation.com/applescript/firsttutorial/18.html
 			tell application "System Events"
 				tell application "Finder" to get the bounds of the window of the desktop
 				tell application "Safari" to set the bounds of the front window to Â
