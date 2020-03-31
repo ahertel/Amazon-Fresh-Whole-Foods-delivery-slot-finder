@@ -11,7 +11,7 @@ The Coronavirus 2019 pandemic caused a surge in demand for grocery delivery serv
 1. Read the [Compatibility](#compatibility) section below to make sure the tool will work for you
 2. Download the 'delivery-window-finder.scpt' [here](https://github.com/ahertel/wholefoods-delivery-slot-finder/raw/master/delivery-window-finder.scpt)
 3. Log into your Amazon account in Safari
-4. Fill your Whole Foods/Amazon Fresh cart and try to checkout manually. Stop once you've arrived at the page saying no slots are available
+4. Fill your Whole Foods/Amazon Fresh cart with your complete order and proceed through the checkout process manually. Stop once you've arrived at the page saying no slots are available
 5. Open delivery-window-finder.scpt in _Script Editor_ and click the 'Play' button to run it
 ![run button](https://i.imgur.com/kpQee5h.png)
 6. Turn up the volume to hear the notification when a slot is found
