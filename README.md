@@ -1,5 +1,5 @@
 # Amazon Fresh/Whole Foods Delivery Slot Finder
-An ApplesScript that finds available delivery slots for Amazon's Whole Foods delivery and Amazon Fresh services.
+An ApplesScript that finds available delivery slots for Amazon.com's Whole Foods delivery and Amazon Fresh services.
 
 ## How it works
 It opens the checkout page in a new window, minimizes it, and then refreshes every ~60 seconds in the background. Once it finds an open slot it alerts you by putting a notification on your screen and playing a sound, and opening the checkout page. __So turn up the volume!__. Once you're notified, quickly select a slot and finish checking out because available slots are snagged almost instantly.
@@ -17,6 +17,8 @@ The Coronavirus 2019 pandemic caused a surge in demand for grocery delivery serv
 6. Turn up the volume to hear the notification when a slot is found
 
 ## Compatibility
+Currently **not compatible** with Whole Foods orders from primenow.com, but Prime Now compatibility will be added soon. Check back around 3/8/20
+
 **Before using this tool**, ensure that your checkout page looks **exactly** like the examples in the _Compatible_ section below.
 This tool currently only works for some regions of the US because Amazon's checkout pages seem to vary based on your location and I designed the tool based on the page I see in my region. 
 If your checkout page doesn't look like the examples in the _Compatible_ or _Incompatible_ sections below, this tool may still work for you but no guarantees.
