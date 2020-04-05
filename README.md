@@ -15,6 +15,7 @@ The Coronavirus 2019 pandemic caused a surge in demand for grocery delivery serv
 5. Open delivery-window-finder.scpt in _Script Editor_ and click the 'Play' button to run it
 ![run button](https://i.imgur.com/kpQee5h.png)
 6. Turn up the volume to hear the notification when a slot is found
+7. In script scroll down to line 107 and add replace "xxxx" with a cellphone number (in quotes) if you want alerts via text message. Note iMessage service on your Mac should be configured for this to work
 
 ## Compatibility
 Currently **not compatible** with Whole Foods orders from primenow.com, but Prime Now compatibility will be added soon. Check back around 3/8/20

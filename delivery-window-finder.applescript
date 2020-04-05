@@ -101,6 +101,12 @@ repeat while found_slot is false
 		display notification "Found delivery slot!" with title "Amazon" sound name "Sosumi"
 		say "Success: Delivery slot found"
 		set found_slot to true
+
+		tell application "Messages"
+			set targetService to 1st service whose service type = iMessage
+			set targetBuddy to buddy "xxxxxxxxxx" of targetService
+			send "Success: Delivery slot available" to targetBuddy
+		end tell
 		
 		tell application "Safari"
 			-- bring window to front
