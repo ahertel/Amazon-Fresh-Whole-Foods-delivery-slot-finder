@@ -1,6 +1,7 @@
-- [Download/Instructions](#instructions)
+- [Download & Instructions](#instructions)
 - [Disclaimer about 'disappearing' slots](#disclaimer-about-disappearing-slots)
-- [Track Progress on Bugs/Enhancements](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/projects)
+- [Submit questions/feedback/issues](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues)
+- [Track progress on bugs/enhancements](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/projects)
 
 # Amazon Fresh/Whole Foods Delivery Slot Finder
 An ApplesScript that finds available delivery slots for Amazon.com's Whole Foods delivery and Amazon Fresh services.
