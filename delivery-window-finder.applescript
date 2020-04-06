@@ -24,20 +24,22 @@ set javascriptEnabled to false
 set javascriptPermissionMsg to "The advanced features of this tool involve clicking on and navigating the Amazon website. The following permission MUST be enabled for this tool to run.
 
 INSTRUCTIONS:
-
+-
 1. While in Safari, push Command-comma together to open Safari Preferences.
 2. Go to the 'Advanced' page on the far right and enable 'Show develop menu in menu bar' at the very bottom.
 3. Click 'Develop' in the menu bar at the top of the screen and click 'Allow Javascript from Apple Events' to enable it.
 4. When finished, click 'Done' to proceed or 'Exit Script' to stop using this tool"
 
-set configCompleteMsg to "Search for slots will start once you click 'Continue'. The tool will will open and minimize a window. The magic happens in that window.
+set configCompleteMsg to "The script will start searching for slots once you click 'Continue'. 
 
-You won't see any sign that it's working until a notification is sent regarind a found slot or an out of stock item(if you selected to be notified). If you want to check on it, you can open the minimized window and watch it open and close the slot page every ~40 seconds. You can then minimize the window again"
+HOW DO I KNOW IT'S WORKING?
+-
+The tool will open and minimize a window once you click 'Continue'. It will quietly search in that window. You won't be get any notifications until A) a slot appears or B) an item goes out of stock and you selected to be notified. If you want to verify the script is running, you can open the minimized window and watch it open and close the slot page every ~60 seconds. You can then minimize the window again or leave it open. Just don't close it"
 
 set welcomeMsg to "Welcome to Delivery Slot Search Tool!
 
 INSTRUCTIONS:
-
+-
 1. Sign into Amazon.com in Safari
 2. Fill your grocery cart
 3. Manually start and continue the checkout process until you arrive at the delivery slot page. The session is now initialized. Close this slot page. It's no longer needed.
@@ -48,11 +50,11 @@ INSTRUCTIONS:
 6. Click 'Continue'. After you answer the prompts, the tool will start searching for slots
 
 DISCLAIMER:
-
+-
 No guarantee that slots will be found and/or that slots will work. Often you will select a slot but the page will refresh and the slot will disappear. These phantom slots are very common and are in Amazon's control, not mine.  Eventually a slot should work. Some users report success of after 20+ tries. Wishing you resilience and hope!
  
 FEEDBACK:
-
+-
 Post any concerns/feedback on GitHub issue page"
 
 -- Text Messaging variables
@@ -115,11 +117,12 @@ to restartCheckout(selected_cart_url, window_id)
 	end tell
 end restartCheckout
 
-display dialog welcomeMsg with title "Welcome" with icon stop buttons {"Cancel", "Continue"} default button "Continue"
 
 -- USER PROMPTS:
+-- 1. Welcome message w/ instructions & disclaimer
+display dialog welcomeMsg with title "Welcome" with icon stop buttons {"Cancel", "Continue"} default button "Continue"
 
--- 1. Prompt whether to ignore oos or wait for user to review
+-- 2. Prompt whether to ignore oos or wait for user to review
 display dialog ignoreOosPromptMsg buttons {"Cancel", "A. Keep looking for slots", "B. Wait for me to review"} default button "A. Keep looking for slots" with title "Ignore Out Of Stock?" with icon note
 
 if result = {button returned:"A. Keep looking for slots"} then
@@ -134,20 +137,25 @@ if result = {button returned:"Done"} then
 end if
 
 if javascriptEnabled then
-	-- 2. Prompt user to enable text message notifications
+	-- 3. Prompt user to enable text message notifications
 	-- TO-DO: consider converting this to a function
 	repeat while promptForNumber is true
 		-- checks if messages icon exists
 		try
+			-- Check if Messages.app icon can be found
 			do shell script "/bin/ls " & messageAppIconFilepath
+			-- if icon found, the prompt will include the Messages icon.
 			set dialogResult to display dialog sendTextsPromptMsg buttons {"Cancel", "Yes", "No"} default button "Yes" with title "Text Notifications" with icon file (messageIconDialogPath)
 		on error errMsg number errNum
 			-- errNum 1 means messages icon not found. use generic icon
 			if errNum = 1 then
+				-- prompt without Messages.app icon
 				set dialogResult to display dialog sendTextsPromptMsg buttons {"Cancel", "Yes", "No"} default button "Yes" with title "Text Notifications" with icon note
+			else
+				-- intentionally cancel the script if the caught error is any other code
+				error number -128
 			end if
-			-- intentionally cancel the script
-			error number -128
+			
 		end try
 		--set temp to file ("System:Applications:Messages.app:Contents:Resources:MessagesAppIcon.icns")
 		if button returned of dialogResult = "Yes" then
@@ -186,7 +194,7 @@ if javascriptEnabled then
 		end if
 	end repeat
 	
-	-- 3. Prompt for delivery service type
+	-- 4. Prompt for delivery service type
 	set servicePrompt to display dialog "What delivery service do you want to use this script for?" buttons {"Cancel", "Whole Foods via Amazon.com", "Amazon Fresh"} with icon note with title "Which Service?"
 	if button returned of servicePrompt = "Whole Foods via Amazon.com" then
 		set selected_cart_url to wfm_cart_url
@@ -194,7 +202,7 @@ if javascriptEnabled then
 		set selected_cart_url to fresh_cart_url
 	end if
 	
-	display dialog configCompleteMsg buttons {"Cancel", "Continue"} with title "Configuration Complete" with icon note
+	display dialog configCompleteMsg buttons {"Cancel", "Continue"} with title "Configuration Complete" with icon note default button "Continue"
 	
 	
 	-- START SEARCH
