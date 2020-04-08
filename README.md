@@ -1,4 +1,4 @@
-Quick Links
+#### Quick Links
 - [Download & Instructions](#instructions)
 - [Disclaimer about 'disappearing' slots](#disclaimer-about-disappearing-slots)
 - [Questions/feedback/issues](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues)
