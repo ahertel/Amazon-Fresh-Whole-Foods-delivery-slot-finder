@@ -1,15 +1,14 @@
+Quick Links
 - [Download & Instructions](#instructions)
 - [Disclaimer about 'disappearing' slots](#disclaimer-about-disappearing-slots)
-- [Submit questions/feedback/issues](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues)
-- [Track progress on bugs/enhancements](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/projects)
+- [Questions/feedback/issues](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues)
+- [Track bugs/enhancements](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/projects)
+- [Supporting me/Donations](#how-can-you-support-me)
 
 # Amazon Fresh/Whole Foods Delivery Slot Finder
 An ApplesScript that finds available delivery slots for Amazon.com's Whole Foods delivery and Amazon Fresh services.
 
-## How it works
-It opens the checkout page in a new window, minimizes it, and then refreshes every ~60 seconds in the background. Once it finds an open slot it alerts you by putting a notification on your screen and playing a sound, and opening the checkout page. Once you're notified, quickly select a slot and finish checking out because available slots are snagged almost instantly.
-
-# New Features:
+## New Features
 * #### New interface - added 4/6/20
   * Improve user experiecnce to accompany new features
 * #### Text message notifications - added 4/6/20
@@ -27,21 +26,25 @@ No guarantee that slots will be found and/or that slots will work. Often you wil
 ## Instructions
 1. Read the [Compatibility](#compatibility) section below to make sure the tool will work for you
 2. Download the 'delivery-window-finder.scpt' [here](https://github.com/ahertel/wholefoods-delivery-slot-finder/raw/master/delivery-window-finder.scpt)
+3. Enable "Allow JavaScript from Apple Events". [How-to video](https://www.youtube.com/watch?v=S6zb_6yTAbo)
 3. Log into your Amazon account in Safari
 4. Fill your Whole Foods/Amazon Fresh cart with your complete order and proceed through the checkout process manually. Stop once you've arrived at the page saying no slots are available
-5. Open delivery-window-finder.scpt in _Script Editor_ and click the 'Play' button to run it
+5. Open delivery-window-finder.scpt in _Script Editor_ and click the 'Play' button to run it and follow the prompts
 ![run button](https://i.imgur.com/kpQee5h.png)
 6. Turn up the volume to hear the notification when a slot is found
 
+Notes:
+The script will stop running if your computer falls asleep. You can adjust your 'Energy Saver' settings in System Preferences or download [Caffeine app](https://intelliscapesolutions.com/apps/caffeine) to keep your Mac awake.
+
 ## Compatibility
-Currently **not compatible** with Whole Foods orders from primenow.com, but Prime Now compatibility may be added eventually. Check back periodically.
+Currently **not compatible** with Whole Foods orders from primenow.amazon.com. Currently only compatible with Amazon Fresh and Whole Foods orders from amazon.com. Prime Now compatibility may be added eventually. Check [here](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues/23) for any progress.
 
 **Before using this tool**, ensure that your checkout page looks **exactly** like the examples in the _Compatible_ section below.
-This tool currently only works for some regions of the US because Amazon's checkout pages seem to vary based on your location and I designed the tool based on the page I see in my region. 
+This tool currently only works for some regions because Amazon's checkout pages seem to vary based on your location and I designed the tool based on the page I see in my region. 
 If your checkout page doesn't look like the examples in the _Compatible_ or _Incompatible_ sections below, this tool may still work for you but no guarantees.
 
 ### Compatible
-These are sample screenshots for delivery to a NJ address
+These are sample screenshots for delivery to a New Jersey address
 #### Whole Foods
 ![Whole Foods](https://i.imgur.com/r7EQQF6.jpg)
 
@@ -55,16 +58,21 @@ These are sample screenshots for delivery to a NJ address
 ##### 2.
 ![an unkown city in CA](https://i.imgur.com/PYrO9Il.jpg)
 
-## Why use this?
-The Coronavirus 2019 pandemic caused a surge in demand for grocery delivery services, making it nearly impossible to find an open delivery slot. Manually refreshing the page seemed too hard so I created this script to automate the search.
 
-Notes
--
-It will open a new window with the amazon checkout page, and minimize that window so that it can run in the background.
-You'll be notified when a slot frees up. Don't quit Safari or let your computer fall asleep, or the tool will stop running.
-If you want it to run while you are away from your computer, I recommend downloading the [Caffeine app](http://lightheadsw.com/caffeine/) to keep your Mac awake, then turning the volume all the way up so you can hear when it finds a slot.
+## How it works
+- It opens the checkout page in a new window, minimizes it, and then refreshes every ~60 seconds in the background.
+- Once it finds an open slot it alerts you by putting a notification on your screen and playing a sound, and opening the checkout page. You can choose to receive text messages when a slot is found
+- You can choose to have the tool ignore out of stock notifications and continue searching uninterrupted
+- Once you're notified, quickly select a slot and finish checking out because available slots are snagged almost instantly.
 
-Slots seem to open up at midnight in each time zone, but also sometimes randomly during the day. I've gotten slots at 1:04pm and and 1:06am here in the EST time zone.
+## Inspiration for this tool
+The Coronavirus 2019 pandemic caused a surge in demand for grocery delivery services, making it nearly impossible to find an open delivery slot. My intention in providing this tool is first and foremost help those in need (e.g. at-risk people, health care workers) have an easier time staying safe. The idea came to me when I realized my parents, who both have auto-immune diseases, had been trying unsuccesfully for several days to get grocery delivery slots.
 
-A copy of the code is also available in .txt format. However, this copy might not be the most up to date version. The .scpt file is the most current and the one you should download if you want to run this tool
-on your Mac.
+## How can you support me
+I don't want anything in return for this tool - I'm just happy to be receiving all these stories about how this has helped people, especially those in need. That said, a [few](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues/19) people have wanted to make a donation. To those who want to want to support me, thank you so much! I am graduating from Georgetown Undergrad Business School in May and looking for a job so the ‘contributions’ that would help me most right now are introductions or leads for a job.
+Broadly speaking, I’m interested in the intersection of business/tech, including product management, operations, and business/data analytics. My [resume](https://drive.google.com/open?id=1Cb5uAHjFeg4GOb4Gr7jLkm3Ga9tK1OIT)
+
+## Common Issues
+- **"Safari got an error: can't get window id"** _Solution:_ Don't quit Safari, or close the window opened and minimized by the script. See [here](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues/18) for more help.
+
+A copy of the code is also available in .txt format. However, this copy might not be the most up to date version. The .scpt file is the most current and the one you should download if you want to run this tool.
