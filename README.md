@@ -3,6 +3,7 @@
 - [Disclaimer about 'disappearing' slots](#disclaimer-about-disappearing-slots)
 - [Questions/feedback/issues](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues)
 - [Track bugs/enhancements](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/projects)
+- [How it works](#how-it-works]
 - [Supporting me/Donations](#how-can-you-support-me)
 
 # Amazon Fresh/Whole Foods Delivery Slot Finder
