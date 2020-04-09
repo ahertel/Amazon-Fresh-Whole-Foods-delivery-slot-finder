@@ -1,3 +1,5 @@
+**Featured on [CNBC](https://www.cnbc.com/2020/04/08/how-to-get-a-amazon-fresh-whole-foods-delivery-timeslot.html)**
+
 #### Quick Links
 - [Download & Instructions](#instructions)
 - [Disclaimer about 'disappearing' slots](#disclaimer-about-disappearing-slots)
@@ -27,11 +29,12 @@ No guarantee that slots will be found and/or that slots will work. Often you wil
 1. Read the [Compatibility](#compatibility) section below to make sure the tool will work for you
 2. Download the 'delivery-window-finder.scpt' [here](https://github.com/ahertel/wholefoods-delivery-slot-finder/raw/master/delivery-window-finder.scpt)
 3. Enable "Allow JavaScript from Apple Events". [How-to video](https://www.youtube.com/watch?v=S6zb_6yTAbo)
-3. Log into your Amazon account in Safari
-4. Fill your Whole Foods/Amazon Fresh cart with your complete order and proceed through the checkout process manually. Stop once you've arrived at the page saying no slots are available
-5. Open delivery-window-finder.scpt in _Script Editor_ and click the 'Play' button to run it and follow the prompts
+4. Log into your Amazon account in Safari
+5. Fill your Whole Foods/Amazon Fresh cart with your complete order and proceed through the checkout process manually. Stop once you've arrived at the page saying no slots are available
+6. Open delivery-window-finder.scpt in _Script Editor_ and click the 'Play' button to run it and follow the prompts
 ![run button](https://i.imgur.com/kpQee5h.png)
-6. Turn up the volume to hear the notification when a slot is found
+7. Turn up the volume to hear the notification when a slot is found
+8. Once you receive your order, please consider tipping if you can. They are exposing themselves to risk to protect us. Thanks!
 
 Notes:
 The script will stop running if your computer falls asleep. You can adjust your 'Energy Saver' settings in System Preferences or download [Caffeine app](https://intelliscapesolutions.com/apps/caffeine) to keep your Mac awake.
