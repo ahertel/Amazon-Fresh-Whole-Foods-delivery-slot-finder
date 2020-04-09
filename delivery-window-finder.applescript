@@ -294,14 +294,8 @@ if javascriptEnabled then
 				set miniaturized of window id amzn_win_id to false
 				-- wait for window to open
 				delay 1
-				-- maximize window 
-				-- this might be useful later on if I want to have it take a screenshot as proof of delivery slots found
-				-- Credit for fill to screen: https://macosxautomation.com/applescript/firsttutorial/18.html
-				tell application "System Events"
-					tell application "Finder" to get the bounds of the window of the desktop
-					tell application "Safari" to set the bounds of the front window to Â
-						{0, 22, (3rd item of the result), (4th item of the result)}
-				end tell
+				-- zoom window
+				set zoomed of window id amzn_win_id to false
 			end tell
 			
 			-- signals that the loop should end
