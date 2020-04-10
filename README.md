@@ -40,7 +40,15 @@ Notes:
 The script will stop running if your computer falls asleep. You can adjust your 'Energy Saver' settings in System Preferences or download [Caffeine app](https://intelliscapesolutions.com/apps/caffeine) to keep your Mac awake.
 
 ## Compatibility
-Currently **not compatible** with Whole Foods orders from primenow.amazon.com. Currently only compatible with Amazon Fresh and Whole Foods orders from amazon.com. Prime Now compatibility may be added eventually. Check [here](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues/23) for any progress.
+Currently only compatible with Amazon Fresh and Whole Foods orders from amazon.com.
+
+Currently **not compatible** with Whole Foods orders from primenow.amazon.com.  Prime Now compatibility may be added eventually. Check [here](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues/23) for any progress.
+
+**Tip**: While this is not natively compatible with Prime Now–it _appears_ that the delivery slots are (at least sometimes) shared between Prime Now for Whole Foods and amazon.com Whole Foods.
+
+- Prepare your order in Prime Now (app or website) - note store and delivery address
+- Prepare another order in amazon.com WF – this should be a dozen cans of soup or something – make sure same store/address
+- Start the script; when it finds a slot, open Prime Now and it just might be there! Good luck!
 
 **Before using this tool**, ensure that your checkout page looks **exactly** like the examples in the _Compatible_ section below.
 This tool currently only works for some regions because Amazon's checkout pages seem to vary based on your location and I designed the tool based on the page I see in my region. 
