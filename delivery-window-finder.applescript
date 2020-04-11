@@ -91,7 +91,6 @@ end clickClassName
 
 to clickID(theID, tab_num, window_id)
 	tell application "Safari"
-		
 		do JavaScript "document.getElementById('" & theID & "').click();" in tab tab_num of window id window_id
 	end tell
 end clickID
