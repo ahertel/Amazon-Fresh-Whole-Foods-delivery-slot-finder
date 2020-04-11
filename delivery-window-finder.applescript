@@ -5,11 +5,12 @@ set oos_keyword to "We're sorry we are unable to fulfill your entire order"
 set oos_msg to "click 'continue' on out of stock page before closing this dialog box"
 set unknown_page_msg to "Unknown amazon page was loaded. try to manually navigate back to the 'Schedule your order page', and then run the program again"
 set slot_site_url to "https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html?hasWorkingJavascript=1"
+global prime_now_merchant_specific_slot_url
+set prime_now_merchant_specific_slot_url to ""
+
 set wfm_slot_page_keyword to "Schedule your order"
 set fresh_slot_page_keyword to "Schedule your order"
 set prime_now_slot_page_keyword to "Select Delivery Time"
-global prime_now_merchant_specific_slot_url
-set prime_now_merchant_specific_slot_url to ""
 set selected_slot_page_keyword to ""
 
 set no_slot_keyword to "No delivery windows available"
