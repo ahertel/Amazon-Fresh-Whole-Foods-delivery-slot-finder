@@ -5,7 +5,13 @@ set oos_keyword to "We're sorry we are unable to fulfill your entire order"
 set oos_msg to "click 'continue' on out of stock page before closing this dialog box"
 set unknown_page_msg to "Unknown amazon page was loaded. try to manually navigate back to the 'Schedule your order page', and then run the program again"
 set slot_site_url to "https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html?hasWorkingJavascript=1"
-set slot_page_keyword to "Schedule your order"
+set wfm_slot_page_keyword to "Schedule your order"
+set fresh_slot_page_keyword to "Schedule your order"
+set prime_now_slot_page_keyword to "Select Delivery Time"
+global prime_now_merchant_specific_slot_url
+set prime_now_merchant_specific_slot_url to ""
+set selected_slot_page_keyword to ""
+
 set no_slot_keyword to "No delivery windows available"
 set is_first_run to true
 set auto_ignore_oos to true
@@ -17,6 +23,8 @@ B. stop searching for slots until you manually review what went out of stock?"
 
 set wfm_cart_url to "https://www.amazon.com/cart/localmarket"
 set fresh_cart_url to "https://www.amazon.com/cart/fresh"
+global prime_now_cart_url
+set prime_now_cart_url to "https://primenow.amazon.com/cart"
 set selected_cart_url to ""
 
 -- for clicking functionality
@@ -82,6 +90,7 @@ end clickClassName
 
 to clickID(theID, tab_num, window_id)
 	tell application "Safari"
+		
 		do JavaScript "document.getElementById('" & theID & "').click();" in tab tab_num of window id window_id
 	end tell
 end clickID
@@ -113,6 +122,11 @@ to restartCheckout(selected_cart_url, window_id)
 	-- before loop restarts. close last tab
 	-- TO-DO: do a test to make sure we landed on the right page. if not, announce unknown error and exit loop
 	tell application "Safari"
+		if selected_cart_url is prime_now_cart_url then
+			set prime_now_merchant_specific_slot_url to URL of last tab of window id window_id
+			log "updated prime_now_merchant_specific_slot_url to contain merchant-specific URL for Prime Now :" & prime_now_merchant_specific_slot_url
+		end if
+		
 		close (last tab of window id window_id)
 	end tell
 end restartCheckout
@@ -195,11 +209,16 @@ if javascriptEnabled then
 	end repeat
 	
 	-- 4. Prompt for delivery service type
-	set servicePrompt to display dialog "What delivery service do you want to use this script for?" buttons {"Cancel", "Whole Foods via Amazon.com", "Amazon Fresh"} with icon note with title "Which Service?"
+	set servicePrompt to display dialog "What delivery service do you want to use this script for?" buttons {"Whole Foods via Amazon.com", "Amazon Fresh", "Amazon Prime Now"} with icon note with title "Which Service?"
 	if button returned of servicePrompt = "Whole Foods via Amazon.com" then
 		set selected_cart_url to wfm_cart_url
+		set selected_slot_page_keyword to wfm_slot_page_keyword
 	else if button returned of servicePrompt = "Amazon Fresh" then
 		set selected_cart_url to fresh_cart_url
+		set selected_slot_page_keyword to fresh_slot_page_keyword
+	else if button returned of servicePrompt = "Amazon Prime Now" then
+		set selected_cart_url to prime_now_cart_url
+		set selected_slot_page_keyword to prime_now_slot_page_keyword
 	end if
 	
 	display dialog configCompleteMsg buttons {"Cancel", "Continue"} with title "Configuration Complete" with icon note default button "Continue"
@@ -219,7 +238,11 @@ if javascriptEnabled then
 		tell application "Safari"
 			-- opens in a new tab every time instead of just using open url request, which would prompt "Are you sure you want to send a form again?" and prevent this from running neatly in the background
 			tell window id amzn_win_id
-				make new tab with properties {URL:slot_site_url}
+				if selected_cart_url is prime_now_cart_url and is_first_run is false then
+					make new tab with properties {URL:prime_now_merchant_specific_slot_url}
+				else
+					make new tab with properties {URL:slot_site_url}
+				end if
 				set current tab to last tab
 			end tell
 			if is_first_run is true then
@@ -272,7 +295,7 @@ if javascriptEnabled then
 				display dialog oos_msg with title "Out of Stock" with icon caution
 			end if
 			
-		else if siteText contains slot_page_keyword and (siteText contains "AM" or siteText contains "PM") then
+		else if siteText contains selected_slot_page_keyword and (siteText contains "AM" or siteText contains "PM") then
 			-- landed on delivery slot page and delivery slot selection drop down appears aka. slot found!
 			display notification "Found delivery slot!" with title "Amazon" sound name "Sosumi"
 			say "Delivery slot appeared. Try to checkout. Success not guaranteed"
@@ -299,7 +322,7 @@ if javascriptEnabled then
 				-- Credit for fill to screen: https://macosxautomation.com/applescript/firsttutorial/18.html
 				tell application "System Events"
 					tell application "Finder" to get the bounds of the window of the desktop
-					tell application "Safari" to set the bounds of the front window to Â
+					tell application "Safari" to set the bounds of the front window to Â¬
 						{0, 22, (3rd item of the result), (4th item of the result)}
 				end tell
 			end tell
