@@ -7,6 +7,7 @@ set unknown_page_msg to "Unknown amazon page was loaded. try to manually navigat
 set slot_site_url to "https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html?hasWorkingJavascript=1"
 set slot_page_keyword to "Schedule your order"
 set no_slot_keyword to "No delivery windows available"
+set no_slot_keyword_doorstep to "No doorstep delivery windows"
 set is_first_run to true
 set auto_ignore_oos to true
 
@@ -85,6 +86,18 @@ to clickID(theID, tab_num, window_id)
 		do JavaScript "document.getElementById('" & theID & "').click();" in tab tab_num of window id window_id
 	end tell
 end clickID
+
+to closeTabNoSlotFound(win_id)
+	-- closes the tab since no slot was found
+	tell application "Safari"
+		close (last tab of window id win_id)
+	end tell
+
+	log "no slots found"
+
+	-- delay so you don't spam Amazon's site
+	delay 5
+end closeTabNoSlotFound
 
 -- if unknown page is encountered, this automatically navigates to back to the cart and then all the way to delivery slot page
 to restartCheckout(selected_cart_url, window_id)
@@ -239,16 +252,7 @@ if javascriptEnabled then
 		
 		-- no delivery slots available
 		if siteText contains no_slot_keyword then
-			
-			-- closes the tab since no slot was found
-			tell application "Safari"
-				close (last tab of window id amzn_win_id)
-			end tell
-			
-			log "no slots found"
-			
-			-- delay so you don't spam Amazon's site
-			delay 10
+			closeTabNoSlotFound(amzn_win_id)
 		else if siteText contains oos_keyword then
 			-- landed on out of stock page
 			
@@ -306,6 +310,8 @@ if javascriptEnabled then
 			
 			-- signals that the loop should end
 			set found_slot to true
+		else if siteText contains no_slot_keyword_doorstep then
+			closeTabNoSlotFound(amzn_win_id)
 		else
 			-- encountered unknown page
 			-- will navigate back to the cart and from there back to the slot selection page
