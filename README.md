@@ -79,3 +79,5 @@ If you'd like to support me directly: I am graduating from Georgetown Undergrad 
 - **"Safari got an error: can't get window id"** _Solution:_ Don't quit Safari, or close the window opened and minimized by the script. See [here](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues/18) for more help.
 
 A copy of the code is also available in .txt format. However, this copy might not be the most up to date version. The .scpt file is the most current and the one you should download if you want to run this tool.
+
+<a href="tracking.gitads.io/?repo=Amazon-Fresh-Whole-Foods-delivery-slot-finder"><img src="images.gitads.io/Amazon-Fresh-Whole-Foods-delivery-slot-finder" alt="GitAds"/></a>
