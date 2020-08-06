@@ -7,6 +7,8 @@ set unknown_page_msg to "Unknown amazon page was loaded. try to manually navigat
 set slot_site_url to "https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html?hasWorkingJavascript=1"
 set slot_page_keyword to "Schedule your order"
 set no_slot_keyword to "No delivery windows available"
+set no_doorstep_slot_keyword to "No doorstep delivery windows are available"
+set no_attended_slot_keyword to "No attended delivery windows are available"
 set is_first_run to true
 set auto_ignore_oos to true
 
@@ -229,16 +231,52 @@ if javascriptEnabled then
 			end if
 			
 			-- wait for the page to load
-			delay 30
+			delay 10
 			
 			-- get the text on the page
 			set siteText to (text of last tab of window id amzn_win_id) as string
 		end tell
 		
+		-- click on tomorrow
+		clickClassName("a-button-text", 11, -1, amzn_win_id)
+		
+		delay 10
+		
+		tell application "Safari"
+			
+			set siteText2 to (text of last tab of window id amzn_win_id) as string
+			
+		end tell
+		
+		
+		-- click on 2 days later	
+		clickClassName("a-button-text", 12, -1, amzn_win_id)
+		
+		delay 10
+		
+		tell application "Safari"
+			
+			set siteText3 to (text of last tab of window id amzn_win_id) as string
+			
+		end tell
+		
+		
+		-- click on 3 days later
+		clickClassName("a-button-text", 13, -1, amzn_win_id)
+		
+		delay 10
+		
+		tell application "Safari"
+			
+			set siteText4 to (text of last tab of window id amzn_win_id) as string
+			
+		end tell
+		
+		
 		-- PROCESS PAGE CONTENTS:
 		
 		-- no delivery slots available
-		if siteText contains no_slot_keyword then
+		if ((siteText contains no_slot_keyword) or (siteText contains no_doorstep_slot_keyword) or (siteText contains no_attended_slot_keyword)) and ((siteText2 contains no_slot_keyword) or (siteText2 contains no_doorstep_slot_keyword) or (siteText2 contains no_attended_slot_keyword)) and ((siteText3 contains no_slot_keyword) or (siteText3 contains no_doorstep_slot_keyword) or (siteText3 contains no_attended_slot_keyword)) and ((siteText4 contains no_slot_keyword) or (siteText4 contains no_doorstep_slot_keyword) or (siteText4 contains no_attended_slot_keyword)) then
 			
 			-- closes the tab since no slot was found
 			tell application "Safari"
