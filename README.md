@@ -10,18 +10,6 @@
 # Amazon Fresh/Whole Foods Delivery Slot Finder
 A Mac-only tool that finds available delivery slots for Amazon.com's Whole Foods delivery and Amazon Fresh services.
 
-## New Features
-* #### New interface - added 4/6/20
-  * Improve user experiecnce to accompany new features
-* #### Text message notifications - added 4/6/20
-  * You can now get text messages when a slot is found. Added by popular demand, despite limitated utility: If you set the recipient to the same number linked to your Mac's 'Messages' app, you may not be notified on your phone as the texts may be automatically marked as read. Thus it's recommended that you enter a different phone number from the one linked to your 'Messages' app (e.g your google voice number that forwards to your real number, a family member's number, your work cell-phone)
-* #### Automatically handle unknown pages - added 4/6/20
-  * Amazon.com sometimes redirects the URL of the delivery slot page to the Amazon homepage, and previously the tool would require a manual restart. Now it automatically navigates back the delivery slot page whenever an unknown page is encountered. One step closer to this program running without needing any monitoring/intervention
-
-* #### Auto-ignore out of stock items -  added 3/31/20
-  * Amazon.com displays notices when items in your cart go out of stock. Now the tool can automatically ignore these warnings so it keep looking for slots without your intervention.
-
-
 ## DISCLAIMER about "disappearing" slots
 No guarantee that slots will be found and/or that slots will work. Often you will select a slot but the page will refresh and the slot will disappear. These phantom slots are very common and are unfortunately in Amazon's control, not mine.  Eventually a slot should work. Some users report success of after 20+ tries. Wishing you resilience and hope! Feel free to post concerns in the [Issues](https://github.com/ahertel/Amazon-Fresh-Whole-Foods-delivery-slot-finder/issues) section.
 
@@ -29,6 +17,11 @@ No guarantee that slots will be found and/or that slots will work. Often you wil
 1. Read the [Compatibility](#compatibility) section below to make sure the tool will work for you
 2. Download the 'delivery-window-finder.scpt' [here](https://github.com/ahertel/wholefoods-delivery-slot-finder/raw/master/delivery-window-finder.scpt)
 3. Enable "Allow JavaScript from Apple Events". [How-to video](https://www.youtube.com/watch?v=S6zb_6yTAbo)
+    1. Open Safari
+    2. Safari menu -> **Preferences** -> **Advanced**
+    3. Check **Show Develop menu in Menu Bar**
+    4. You will now see a **Develop** menu in your menu bar
+    5. Click **Allow Javascrupt from Apple Events** _(near the bottom of the menu)_
 4. Log into your Amazon account in Safari
 5. Fill your Whole Foods/Amazon Fresh cart with your complete order and proceed through the checkout process manually. Stop once you've arrived at the page saying no slots are available
 6. Open delivery-window-finder.scpt in _Script Editor_ and click the 'Play' button to run it and follow the prompts
