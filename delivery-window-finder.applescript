@@ -5,8 +5,10 @@ set oos_keyword to "We're sorry we are unable to fulfill your entire order"
 set oos_msg to "click 'continue' on out of stock page before closing this dialog box"
 set unknown_page_msg to "Unknown amazon page was loaded. try to manually navigate back to the 'Schedule your order page', and then run the program again"
 set slot_site_url to "https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html?hasWorkingJavascript=1"
-set slot_page_keyword to "Schedule your order"
+set slot_page_keyword to "Reserve your time"
 set no_slot_keyword to "No delivery windows available"
+set no_doorstep_slot_keyword to "No doorstep delivery windows are available"
+set no_attended_slot_keyword to "No attended delivery windows are available"
 set is_first_run to true
 set auto_ignore_oos to true
 
@@ -238,7 +240,7 @@ if javascriptEnabled then
 		-- PROCESS PAGE CONTENTS:
 		
 		-- no delivery slots available
-		if siteText contains no_slot_keyword then
+		if (siteText contains no_slot_keyword) or (siteText contains no_doorstep_slot_keyword) or (siteText contains no_attended_slot_keyword) then
 			
 			-- closes the tab since no slot was found
 			tell application "Safari"
